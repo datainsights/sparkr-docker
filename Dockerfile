@@ -1,5 +1,5 @@
 FROM centos:centos6
-MAINTAINER Tetsuo Yamabe
+MAINTAINER enzo smartinsightsfromdata 
 
 RUN yum reinstall -y glibc-common
 RUN yum install -y locales java-1.7.0-openjdk-devel tar
