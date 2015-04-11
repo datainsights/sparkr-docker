@@ -33,9 +33,9 @@ RUN yum --enablerepo=rpmforge-extras install -y git
 # Fetch and build Spark package
 
 WORKDIR /home/root
-RUN wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.1.tgz
-RUN tar zxvf spark-1.1.1.tgz
-WORKDIR /home/root/spark-1.1.1
+RUN wget http://d3kbcqa49mib13.cloudfront.net/spark-1.2.0.tgz
+RUN tar zxvf spark-1.2.0.tgz
+WORKDIR /home/root/spark-1.2.0
 RUN sbt/sbt assembly
 
 # Install SparkR
@@ -47,8 +47,8 @@ RUN R CMD INSTALL rJava_0.9-6.tar.gz
 RUN R CMD javareconf
 
 RUN yum install -y openssl098e 
-RUN wget http://download2.rstudio.org/rstudio-server-0.98.1091-x86_64.rpm
-RUN yum install -y --nogpgcheck rstudio-server-0.98.1091-x86_64.rpm
+RUN wget https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-rhel-0.99.386-x86_64.rpm
+RUN yum install -y --nogpgcheck rstudio-server-0.99.386-x86_64.rpm
 
 RUN yum install -y curl-devel
 ADD files/sparkInstall.R /tmp/sparkInstall.R
